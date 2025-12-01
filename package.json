@@ -9,5 +9,8 @@
   "private": true,
   "devDependencies": {
     "prettier": "^3.7.3"
+  },
+  "dependencies": {
+    "@types/node": "^24.10.1"
   }
 }
