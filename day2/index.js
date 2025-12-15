@@ -36,7 +36,11 @@ function isInvalid(nbr) {
   return half1 === half2;
 }
 
-async function main() {
+function isInvalidReg(nbr) {
+  return /^(\d+)\1+$/.test(nbr);
+}
+
+async function part1() {
   const input = await readInput();
 
   let total = 0;
@@ -54,4 +58,19 @@ async function main() {
   console.log(`Result = ${total}`);
 }
 
-await main();
+async function part2() {
+  const input = await readInput();
+  let invalids = [];
+  for (const value of input) {
+    const [start, end] = value.split("-").map(Number);
+    for (let i = start; i <= end; i++) {
+      if (isInvalidReg(i.toString())) {
+        invalids.push(i);
+      }
+    }
+  }
+
+  console.log(invalids.reduce((s, v) => s + v));
+}
+
+await part2();
